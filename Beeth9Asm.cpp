@@ -12,33 +12,35 @@
 using namespace std;
 
 // checkFilenameErrors Function Signature
-bool checkFilenameErrors(int argc, char **argv);
+bool checkFileErrors(int argc, char **argv);
 
 int main (int argc, char **argv) {
 
-  cout << "Hello World" << endl;
-
+  // Check if any basic file errors and correct number of args passed in
+  if (checkFileErrors(argc, argv)) {
+    return EXIT_FAILURE;
+  }
   return 0;
 
 }
 
-/* Function Name: checkFilenameErrors()
- * Function Prototype: checkFilenameErrors(int argc, char **argv)
+/* Function Name: checkFileErrors()
+ * Function Prototype: checkFileErrors(int argc, char **argv)
  * Description: Function that checks to see if number of input arguments to 
  *              the Beeth9 Assembler program is correct and validates input
  *              and output filenames
  * Input Parameters: 
  *    arg1 - int argc
  *    arg2 - char **argv
- * Return Values/Type: boolean - true if there were no errors, otehrwise false
+ * Return Values/Type: boolean - true if there were no errors, otherwise false
  */
-bool checkFilenameErrors(int argc, char **argv) {
+bool checkFileErrors(int argc, char **argv) {
   // Check if number of arguments is 3, if not then output error message and
   // return true 
   if (argc != 3) {
     cout << "Incorrect number of arguments!" << endl;
     cout << "Please run Beeth9 Assembler as following:" << endl;
-    cout << "./Beeth9Asm infile outfile" << endl;
+    cout << "./Beeth9Asm *.s  *.txt" << endl;
     return true;
   }
   // Check if input and output filenames are not the same, if they are then
