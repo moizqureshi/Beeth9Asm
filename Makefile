@@ -22,4 +22,4 @@ Beeth9Asm: Beeth9Asm.o
 
 # Clean/Remove all object files
 clean: 
-	rm -r Beeth9Asm *.o core*
+	rm -r Beeth9Asm *.o 
