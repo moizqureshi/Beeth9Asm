@@ -18,8 +18,8 @@ LDFLAGS=-g
 # Main target to compule Beeth9 Assembler
 all: Beeth9Asm
 
-Beeth9Asm: Beeth9Asm.o
+Beeth9Asm: Beeth9Asm.o Parser.hpp
 
 # Clean/Remove all object files
 clean: 
-	rm -r Beeth9Asm *.o 
+	rm -rf Beeth9Asm *.o 
