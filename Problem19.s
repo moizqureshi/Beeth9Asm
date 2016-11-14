@@ -16,16 +16,6 @@
  * rOv - overflow register (here just for identification)
  */
 
-
-	# r1 will be preloaded with 128 (start mem address of array) in tb
-	# r2 will be preloaded with 0 in tb
-	# r3 will be preloaded with 0 in tb
-	# r4 will be preloaded with 0 in tb
-	# r5 will be preloaded with 1 in tb
-	# r6 will be preloaded with 255 in tb
-	# r7 will be preloaded with 0 in tb
-
-
 	li 19			# load value of 19 into r0 (outer loop limit)
 	slt $r4, $r0		# rOv = (r4 < r0) ? 1:0
 
@@ -135,7 +125,8 @@
 
 	clr $r6			# clear r6 (min = 0, since arr[i] == arr[j])
 
-	li 64			# load value of 64 into r0
+	li 63			# load value of 63 into r0
+	inc $r0 		# increment r0 to get 64
 	sll $r0			# left shift r0 by 1 to get 128
 
 	clr $r7			# clear r7
