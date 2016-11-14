@@ -9,6 +9,7 @@
 #include <sstream>
 #include <bitset>
 #include <queue>
+#include <algorithm>
 
 #include "Parser.hpp"
 
@@ -31,8 +32,8 @@ int Parser::getInstrEnum(string s) {
   else if (s == "patr") return 13;
   else if (s == "abs") return 14;
   else if (s == "add") return 15;
-  else if (s == "and") return 16;
-  else if (s == "sub") return 17;
+  else if (s == "sub") return 16;
+  else if (s == "and") return 17;
   else if (s == "or") return 18;
   else if (s == "slt") return 19;
   else return -1;
