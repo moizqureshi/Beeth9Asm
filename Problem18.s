@@ -65,8 +65,8 @@
 	inc $r3			# increment r3 (offset to get next byte)
 	inc $r4			# increment r4 (loop counter)
 
-	li 13			# load value of into r0
-	twocmp $r0		# take 2's complement of 13 to get -13 in r0
+	li 13 			# load value of into r0
+	twcmp $r0		# take 2's complement of 13 to get -13 in r0
 	branch $r0		# always branch to loop
 
 	li 7			# load value of 7 into r0
