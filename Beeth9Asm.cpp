@@ -13,6 +13,7 @@
 #include <sstream>
 #include <queue>
 #include <algorithm>
+#include <exception>
 
 #include "Parser.hpp"
 
@@ -77,6 +78,8 @@ int main (int argc, char **argv) {
       line.erase(0,1); 
     }
 
+    //cout << line << endl;
+
     switch (line[0]) {
       case 0 : // do nothing if null char
         break;
@@ -111,10 +114,6 @@ int main (int argc, char **argv) {
  * Return Values/Type:
  */
 void tokenizeString(string line, queue<string> &tokens) {
-  // Get position of first tab char in instruction line and delete
-  // everthing after that since its a comment
-  int tabPosition = line.find_first_of(9);
-  line.erase(tabPosition);
   
   // Erase all occurrences of delimiting and junk characters from one line
   // of Beeth9 assembly code
@@ -123,10 +122,17 @@ void tokenizeString(string line, queue<string> &tokens) {
   line.erase(std::remove(line.begin(), line.end(), '%'), line.end()); 
   line.erase(std::remove(line.begin(), line.end(), '('), line.end()); 
   line.erase(std::remove(line.begin(), line.end(), ')'), line.end()); 
+  line.erase(std::remove(line.begin(), line.end(), 9), line.end()); 
  
+  // Get position of first # char in instruction line and delete
+  // everthing after that since its a comment
+  int tabPosition = line.find_first_of(35);
+  try {
+    line.erase(tabPosition);
+  } catch (exception &e) {
+    // Do nothing :)
+  }
   
-  //cout << line << endl;
-
   // Use string stream to tokenize assembly instruction
   stringstream ss(line);
   string token;
