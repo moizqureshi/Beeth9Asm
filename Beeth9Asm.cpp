@@ -9,6 +9,8 @@
 #include <fstream>
 #include <cstdlib>
 #include <string>
+#include <sstream>
+#include <queue>
 #include <algorithm>
 
 using namespace std;
@@ -17,16 +19,16 @@ using namespace std;
 bool checkFileErrors(int argc, char **argv);
 
 // tokenizeString Function Signature
-void tokenizeString(string line, string *tokens);
+void tokenizeString(string line, queue<string> &tokens);
 
 int main (int argc, char **argv) {
   // Local Variables
   ifstream input;       // Input file
   ofstream output;      // Output file
 
-  // Create array of string tokens (max size of array is 3, since R2 type 
+  // Create queue for string tokens (max size of array is 3, since R2 type 
   // instructions have max 3 components of any instruction type
-  string tokens[3];
+  queue<string> tokens;
   
 
   // Check if any basic file errors and correct number of args passed in
@@ -102,7 +104,7 @@ int main (int argc, char **argv) {
  * Return Values/Type:
  */
 
-void tokenizeString(string line, string *tokens) {
+void tokenizeString(string line, queue<string> &tokens) {
   // Get position of first tab char in instruction line and delete
   // everthing after that since its a comment
   int tabPosition = line.find_first_of(9);
@@ -110,10 +112,24 @@ void tokenizeString(string line, string *tokens) {
   
   line.erase(std::remove(line.begin(), line.end(), ','), line.end()); 
   line.erase(std::remove(line.begin(), line.end(), '$'), line.end()); 
+  line.erase(std::remove(line.begin(), line.end(), '%'), line.end()); 
   line.erase(std::remove(line.begin(), line.end(), '('), line.end()); 
   line.erase(std::remove(line.begin(), line.end(), ')'), line.end()); 
   
-  cout << line << endl;  
+  stringstream ss(line);
+  string token;
+
+  while(getline(ss, token, ' ')) {
+    tokens.emplace(token);
+  }
+  
+  while(!tokens.empty()) {
+    cout << tokens.front() << endl;
+    tokens.pop();
+  }
+
+  cout << endl;
+
 }
 
 
