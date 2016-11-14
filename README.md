@@ -1,4 +1,4 @@
-# Beeth9 ISA Assembly Codes
+# Beeth9 ISA Assembler (C++)
 * **Filename:** README
 * **Authors:** Moiz Qureshi, Ye Huang, Eduardo Rosales
 * **Description:** README file
