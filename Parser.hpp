@@ -15,21 +15,22 @@
 
 using namespace std;
 
+// Parser Class Definition
 class Parser {
 public:
   
+  // Instuctiion typedef enum
   typedef enum {LI, CLR, INC, SLL, SRL, TWCMP, HALT, LW, SW, BR, 
-               BEZ, LSB, GETOV, PATR, ABS, ADD, SUB, AND, OR, SLT} instr;
+               BEZ, CLSB, GETOV, PATR, ABS, ADD, SUB, AND, OR, SLT} instr;
 
+  // ParseTokens() Function Signature
   string ParseTokens(queue<string> &tokens);
   
-  string getBitsFromInt(const int width, int num);
+  // getBinFromInt Function Signature
+  string getBinFromInt(const int width, int num);
 
+  // getBinFromInt Function Signature
   int getInstrEnum(string s);
 
-
 };
-
-
 #endif // PARSER_HPP
-
