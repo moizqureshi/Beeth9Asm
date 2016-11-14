@@ -4,7 +4,7 @@
 # Except
 !.gitignore
 !README.md
-!*.h
+!*.hpp
 !*.cpp
 !Makefile
 
