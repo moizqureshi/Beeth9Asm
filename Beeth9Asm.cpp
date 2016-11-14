@@ -65,6 +65,9 @@ int main (int argc, char **argv) {
   // Open input file again for text reading now
   input.open(argv[1]);
 
+  // Open the output file for writing
+  output.open(argv[2]);
+
   while (input) {
     string line;
     getline(input, line);
@@ -89,14 +92,15 @@ int main (int argc, char **argv) {
 
       default : tokenizeString(line, tokens); 
                 machineCode = parser.ParseTokens(tokens);
-                cout << machineCode;
+                output << machineCode << endl;
         break;
     } 
   } 
 
-  // Close the input file
+  // Close the input and output files
   input.close();
-  
+  output.close();
+
   return 0;
 }
 
@@ -120,7 +124,8 @@ void tokenizeString(string line, queue<string> &tokens) {
   line.erase(std::remove(line.begin(), line.end(), '('), line.end()); 
   line.erase(std::remove(line.begin(), line.end(), ')'), line.end()); 
  
-  cout << line << endl;
+  
+  //cout << line << endl;
 
   // Use string stream to tokenize assembly instruction
   stringstream ss(line);
@@ -130,8 +135,6 @@ void tokenizeString(string line, queue<string> &tokens) {
   while(getline(ss, token, ' ')) {
     tokens.push(token);
   }
-  
-
 }
 
 /* Function Name: checkFileErrors()
