@@ -8,16 +8,25 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <string>
 
 using namespace std;
 
 // checkFilenameErrors Function Signature
 bool checkFileErrors(int argc, char **argv);
 
+// tokenizeString Function Signature
+void tokenizeString(string line, string *tokens);
+
 int main (int argc, char **argv) {
   // Local Variables
   ifstream input;       // Input file
   ofstream output;      // Output file
+
+  // Create array of string tokens (max size of array is 3, since R2 type 
+  // instructions have max 3 components of any instruction type
+  string tokens[3];
+  
 
   // Check if any basic file errors and correct number of args passed in
   if (checkFileErrors(argc, argv)) {
@@ -52,17 +61,43 @@ int main (int argc, char **argv) {
   // Open input file again for text reading now
   input.open(argv[1]);
 
-  
-  
-  
-  
-  
-  
-  
-  
+  while (input) {
+    string line;
+    getline(input, line);
+    
+    switch (line[0]) {
+      case 9 : tokenizeString(line, tokens);       
+        break;
+
+      default: // do nothing
+        break;
+    }
+    
+  } 
+
+  // Close the input file
+  input.close();
   
   return 0;
 }
+
+/* Function Name:
+ * Function Prototype:
+ * Description:
+ * Input Parameters: 
+ * Return Values/Type:
+ */
+
+void tokenizeString(string line, string *tokens) {
+    
+  
+}
+
+
+
+
+
+
 
 /* Function Name: checkFileErrors()
  * Function Prototype: checkFileErrors(int argc, char **argv)
