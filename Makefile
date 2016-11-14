@@ -14,7 +14,6 @@ CXXFLAGS=-gdwarf-3 -Wall -std=c++11 -g
 # Include debugging symbols in executable
 LDFLAGS=-g
 
-
 # Main target to compule Beeth9 Assembler
 all: Beeth9Asm
 
