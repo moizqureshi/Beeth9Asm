@@ -9,6 +9,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <string>
+#include <string.h>
 #include <sstream>
 #include <queue>
 #include <algorithm>
@@ -88,6 +89,7 @@ int main (int argc, char **argv) {
 
       default : tokenizeString(line, tokens); 
                 machineCode = parser.ParseTokens(tokens);
+                cout << machineCode;
         break;
     } 
   } 
@@ -117,14 +119,16 @@ void tokenizeString(string line, queue<string> &tokens) {
   line.erase(std::remove(line.begin(), line.end(), '%'), line.end()); 
   line.erase(std::remove(line.begin(), line.end(), '('), line.end()); 
   line.erase(std::remove(line.begin(), line.end(), ')'), line.end()); 
-  
+ 
+  cout << line << endl;
+
   // Use string stream to tokenize assembly instruction
   stringstream ss(line);
   string token;
 
   // get important parts of assembly instruction and put in queue
   while(getline(ss, token, ' ')) {
-    tokens.emplace(token);
+    tokens.push(token);
   }
   
 
