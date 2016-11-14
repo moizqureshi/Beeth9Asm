@@ -15,13 +15,53 @@ using namespace std;
 bool checkFileErrors(int argc, char **argv);
 
 int main (int argc, char **argv) {
+  // Local Variables
+  ifstream input;       // Input file
+  ofstream output;      // Output file
 
   // Check if any basic file errors and correct number of args passed in
   if (checkFileErrors(argc, argv)) {
     return EXIT_FAILURE;
   }
-  return 0;
+  
+  // Open the input assembly file for reading for further checking,
+  // use bianry mode to get filesize
+  input.open(argv[1], ifstream::binary);
+  input.seekg(0, input.end);
+  int fileSize = input.tellg();
+  input.seekg(0, input.beg);
 
+  // Check that input assembly file exists and is not empty
+  if (input.fail()) {
+    cout << "The input assembly file does not exist!" << endl;
+    cout << "Try again." << endl;
+    input.close();
+    return EXIT_FAILURE;
+  } else { 
+    if (fileSize == 0) {
+      cout << "The input assembly file is empty!" << endl;
+      cout << "Try again." << endl;
+      input.close();
+      return EXIT_FAILURE;
+    }
+  }
+
+  // Close the input file because we no longer need binary mode
+  input.close();
+
+  // Open input file again for text reading now
+  input.open(argv[1]);
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  return 0;
 }
 
 /* Function Name: checkFileErrors()
