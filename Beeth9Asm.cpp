@@ -13,6 +13,8 @@
 #include <queue>
 #include <algorithm>
 
+#include "Parser.hpp"
+
 using namespace std;
 
 // checkFilenameErrors Function Signature
@@ -25,11 +27,9 @@ int main (int argc, char **argv) {
   // Local Variables
   ifstream input;       // Input file
   ofstream output;      // Output file
-
-  // Create queue for string tokens (max size of array is 3, since R2 type 
-  // instructions have max 3 components of any instruction type
+  Parser parser;
   queue<string> tokens;
-  
+  string machineCode; 
 
   // Check if any basic file errors and correct number of args passed in
   if (checkFileErrors(argc, argv)) {
@@ -87,6 +87,7 @@ int main (int argc, char **argv) {
         break;
 
       default : tokenizeString(line, tokens); 
+                machineCode = parser.ParseTokens(tokens);
         break;
     } 
   } 
@@ -97,46 +98,37 @@ int main (int argc, char **argv) {
   return 0;
 }
 
-/* Function Name:
+/* Function Name: 
  * Function Prototype:
  * Description:
  * Input Parameters: 
  * Return Values/Type:
  */
-
 void tokenizeString(string line, queue<string> &tokens) {
   // Get position of first tab char in instruction line and delete
   // everthing after that since its a comment
   int tabPosition = line.find_first_of(9);
   line.erase(tabPosition);
   
+  // Erase all occurrences of delimiting and junk characters from one line
+  // of Beeth9 assembly code
   line.erase(std::remove(line.begin(), line.end(), ','), line.end()); 
   line.erase(std::remove(line.begin(), line.end(), '$'), line.end()); 
   line.erase(std::remove(line.begin(), line.end(), '%'), line.end()); 
   line.erase(std::remove(line.begin(), line.end(), '('), line.end()); 
   line.erase(std::remove(line.begin(), line.end(), ')'), line.end()); 
   
+  // Use string stream to tokenize assembly instruction
   stringstream ss(line);
   string token;
 
+  // get important parts of assembly instruction and put in queue
   while(getline(ss, token, ' ')) {
     tokens.emplace(token);
   }
   
-  while(!tokens.empty()) {
-    cout << tokens.front() << endl;
-    tokens.pop();
-  }
-
-  cout << endl;
 
 }
-
-
-
-
-
-
 
 /* Function Name: checkFileErrors()
  * Function Prototype: checkFileErrors(int argc, char **argv)
