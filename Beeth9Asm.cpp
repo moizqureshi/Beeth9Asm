@@ -9,6 +9,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <string>
+#include <algorithm>
 
 using namespace std;
 
@@ -65,14 +66,27 @@ int main (int argc, char **argv) {
     string line;
     getline(input, line);
     
+    // if the first char in the line is a tab, remove it
+    if (line[0] == 9) {
+      line.erase(0,1); 
+    }
+
     switch (line[0]) {
-      case 9 : tokenizeString(line, tokens);       
+      case 0 : // do nothing if null char
+        break;
+      
+      case 9 : // do nothing if tab char
         break;
 
-      default: // do nothing
+      case 32 : // do nothing if space char
         break;
-    }
-    
+
+      case 47 : // do nothing if / char
+        break;
+
+      default : tokenizeString(line, tokens); 
+        break;
+    } 
   } 
 
   // Close the input file
@@ -89,8 +103,17 @@ int main (int argc, char **argv) {
  */
 
 void tokenizeString(string line, string *tokens) {
-    
+  // Get position of first tab char in instruction line and delete
+  // everthing after that since its a comment
+  int tabPosition = line.find_first_of(9);
+  line.erase(tabPosition);
   
+  line.erase(std::remove(line.begin(), line.end(), ','), line.end()); 
+  line.erase(std::remove(line.begin(), line.end(), '$'), line.end()); 
+  line.erase(std::remove(line.begin(), line.end(), '('), line.end()); 
+  line.erase(std::remove(line.begin(), line.end(), ')'), line.end()); 
+  
+  cout << line << endl;  
 }
 
 
