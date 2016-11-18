@@ -7,5 +7,7 @@
 !*.hpp
 !*.cpp
 !*.s
+!p**MachineCode.txt
+!Beeth9MachineCode.txt
 !Makefile
 
