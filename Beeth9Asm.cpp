@@ -23,7 +23,7 @@ using namespace std;
 bool checkFileErrors(int argc, char **argv);
 
 // tokenizeString Function Signature
-void tokenizeString(string line, queue<string> &tokens);
+string tokenizeString(string line, queue<string> &tokens);
 
 int main (int argc, char **argv) {
   // Local Variables
@@ -31,6 +31,7 @@ int main (int argc, char **argv) {
   ofstream output;      // Output file
   Parser parser;
   queue<string> tokens;
+  string instruction;
   string machineCode; 
 
   // Check if any basic file errors and correct number of args passed in
@@ -68,6 +69,10 @@ int main (int argc, char **argv) {
 
   // Open the output file for writing
   output.open(argv[2]);
+  
+  // Write comment at top of output txt to denote what assembly file was 
+  // converted to machine code
+  output << "// " << argv[1] << " Machine Code Output" << endl;
 
   while (input) {
     string line;
@@ -78,8 +83,10 @@ int main (int argc, char **argv) {
       line.erase(0,1); 
     }
 
-    //cout << line << endl;
-
+    // Switch-Case that looks at new first char of line. All Beeth9 assembly 
+    // code is tabbed (since there are no labels). If the new first char is not
+    // a regular letter, then line wont be tokenized, parsed, and machine code
+    // printed to output file
     switch (line[0]) {
       case 0 : // do nothing if null char
         break;
@@ -92,10 +99,13 @@ int main (int argc, char **argv) {
 
       case 47 : // do nothing if / char
         break;
-
-      default : tokenizeString(line, tokens); 
+      
+      // if any other char, then this must be a line of instruction.
+      // Tokenize instruction, parse it, and write to output file
+      default : instruction = tokenizeString(line, tokens); 
                 machineCode = parser.ParseTokens(tokens);
-                output << machineCode << endl;
+                output << machineCode;
+                output << "    // " << instruction << endl;
         break;
     } 
   } 
@@ -103,17 +113,24 @@ int main (int argc, char **argv) {
   // Close the input and output files
   input.close();
   output.close();
+  
+  // Give message to console that assembler has completed the job
+  cout << "Beeth 9 Assembler successfully assembled: " << argv[1] << endl;
 
   return 0;
 }
 
-/* Function Name: 
- * Function Prototype:
- * Description:
- * Input Parameters: 
- * Return Values/Type:
+/* Function Name: tokenizeString() 
+ * Function Prototype: 
+ *  string tokenizeString(string line, queue<string> &tokens)
+ * Description: Function that takes a line of Beeth9 Assembly code, 
+ *              and tokenizes it into parts, and puts them in the 
+ *              tokens queue
+ * Input Parameters: arg1 - string line; arg2 - queue<string> &tokens
+ * Return Values/Type: Returns string of assembly line to be written as
+ *                     comment next to converted machine code
  */
-void tokenizeString(string line, queue<string> &tokens) {
+string tokenizeString(string line, queue<string> &tokens) {
   
   // Erase all occurrences of delimiting and junk characters from one line
   // of Beeth9 assembly code
@@ -141,6 +158,8 @@ void tokenizeString(string line, queue<string> &tokens) {
   while(getline(ss, token, ' ')) {
     tokens.push(token);
   }
+  // Return parsed instruction string to be written as comment
+  return line;
 }
 
 /* Function Name: checkFileErrors()
@@ -173,4 +192,3 @@ bool checkFileErrors(int argc, char **argv) {
     return false;
   }
 }
-
