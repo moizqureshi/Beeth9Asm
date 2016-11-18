@@ -15,6 +15,13 @@
 
 using namespace std;
 
+/* Function Name: getInstrEnum()
+ * Function Prototype: int getInstrEnum(string s)
+ * Description: Function that returns int corresponding to a Beeth9 instruction
+ *              Needed, since C++ cant do switch case on string values
+ * Input Parameters: arg1 - string s
+ * Return Values/Type: Integer corresponding to typdef enum instr
+ */
 int Parser::getInstrEnum(string s) {
   if (s == "li") return 0;
   else if (s == "clr") return 1;
@@ -39,14 +46,25 @@ int Parser::getInstrEnum(string s) {
   else return -1;
 }
 
-
+/* Function Name: ParseTokens()
+ * Function Prototype: string ParseTokens(queue<string> &tokens)
+ * Description: Function that takes queue of tokenized one assembly instruction
+ *              and returns the correct Beeth9 machine code for that assembly 
+ *              instruction
+ * Input Parameters: arg1 - queue<string> &tokens
+ * Return Values/Type: Returns string of Beeth9 Machine code of parsed assembly
+ *                     instruction
+ */
 string Parser::ParseTokens(queue<string> &tokens) {
-  stringstream parsedToken;
-  string immBinStr;
-  string regBinStr;
-  string regBinStr2;
+  stringstream parsedToken;   // stringstream used to assemble machine code
+  string immBinStr;           // immediate binary string
+  string regBinStr;           // register R[rs] binary string
+  string regBinStr2;          // register R[rt] binary string
   
-  switch(getInstrEnum(tokens.front())) {
+  // Giant Switch-Case that converts Beeth9 Assembly line into machine code
+  // :). Lots of code reuse, but its okay since we only have 3 types of 
+  // instructions in Beeth9: R1, R2, & I Types
+  switch (getInstrEnum(tokens.front())) {
     case LI :
       tokens.pop();
       parsedToken << "000";
@@ -304,15 +322,22 @@ string Parser::ParseTokens(queue<string> &tokens) {
     default : // do nothing
       break;
   }
-
   return parsedToken.str();
 }
 
+/* Function Name: getBinFromInt()
+ * Function Prototype: string getBinFromInt(const int width, int num)
+ * Description: Converts int num into binary representation int width bits
+ * Input Parameters: arg1 - const int width; arg2 - int num
+ * Return Values/Type: string of binary representation of int num
+ */
 string Parser::getBinFromInt(const int width, int num) {
+  // width is 6 for immediate values
   if (width == 6) {
     bitset<6> imm(num);
     return imm.to_string();
   } else {
+    // width is 3 for all other tokens (opcode, funct code, registers)
     bitset<3> imm(num);
     return imm.to_string();
   } 
