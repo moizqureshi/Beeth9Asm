@@ -26,9 +26,38 @@ text file output, after using Beeth9 Assembler to convert three individual
 assembly files into three machine code output text files.
 
 ## Usage
-###Successfule Beeth9 Assembler program usage:
+###Successful Beeth9 Assembler Execution:
 
 ```
 ./Beeth9 Problem17.s p17MachineCode.txt
 Beeth9 Assembler successfully assembled: Problem17.s
+```
+
+###Unsuccessful Beeth9 Assembler Execution:
+
+Missing Argument(s):
+```
+./Beeth9 Problem17.s 
+Incorrect number of arguments!
+Please run Beeth9 Assembler as following:
+./Beeth9Asm *.s  *.txt
+```
+```
+./Beeth9  
+Incorrect number of arguments!
+Please run Beeth9 Assembler as following:
+./Beeth9Asm *.s  *.txt
+```
+```
+./Beeth9 Problem17.s Problem18.s MachineCode.txt 
+Incorrect number of arguments!
+Please run Beeth9 Assembler as following:
+./Beeth9Asm *.s  *.txt
+```
+
+Empty Input Beeth9 Assembly File:
+```
+./Beeth9 empty.s MachineCode.txt 
+The input assembly file is empty!
+Try again.
 ```
