@@ -23,4 +23,4 @@ Parser.o: Parser.hpp
 
 # Clean/Remove all object files
 clean: 
-	rm -rf Beeth9Asm *.o 
+	rm -rf Beeth9Asm p17MachineCode.txt p18MachineCode.txt p19MachineCode.txt *.o 
