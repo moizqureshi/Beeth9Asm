@@ -2,7 +2,7 @@
 * **Filename:** README
 * **Authors:** Moiz Qureshi, Ye Huang, Eduardo Rosales
 * **Description:** README file
-* **Date:** 10/8/16
+* **Date:** 11/18/16
 
 ![picture alt](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Beethoven.jpg/220px-Beethoven.jpg)
 
@@ -14,18 +14,19 @@ the output text file to write this Beeth9 machine code to. Please see the
 example assembly file formats.
 
 
-**Note:** Beeth9 assembly input files into the Beeth9 Assembler must **not** 
+##Note: 
+Beeth9 assembly input files into the Beeth9 Assembler must **not** 
 contain any labels (all branch offsets must be explicitly stored in a register)
 and all Beeth9 assembly instructions should be tabbed. There is no need to 
 remove any comments since the Beeth9 Assembler will ignore them. Refer to the 
 the example Beeth9 assembly files (Problem17.s, Problem18.s, or Problem19.s) to
-see example formatting. Furthermore, refer Beeth9MachineCode.txt to see 
+see example formatting. Furthermore, refer to Beeth9MachineCode.txt to see 
 combined assembled assembly to machine code of the three programs. Note, this 
 file was created using the unix "cat" and ">" commands to combine them into one
 text file output, after using Beeth9 Assembler to convert three individual 
 assembly files into three machine code output text files.
 
-## Usage
+## Beeth9 Assembler Usage
 ###Successful Beeth9 Assembler Execution:
 
 ```
