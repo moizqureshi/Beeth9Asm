@@ -10,9 +10,8 @@ This repository contains the C++ source code for the Beeth9 Assembler. The
 Beeth9 Assembler takes two input arguments, the first being the input Beeth9
 assembly file to be assembled into Beeth9 machine code, and the second being
 the output text file to write this Beeth9 machine code to. Please see the 
-**Usage** section below to see supported Beeth9 Assembler operations and 
-example assembly file formats.
-
+"Beeth9 Assembler Usage" section below to see supported Beeth9 Assembler 
+operations and example assembly file formats.
 
 ##Note: 
 Beeth9 assembly input files into the Beeth9 Assembler must **not** 
@@ -26,7 +25,20 @@ file was created using the unix "cat" and ">" commands to combine them into one
 text file output, after using Beeth9 Assembler to convert three individual 
 assembly files into three machine code output text files.
 
+In order to compile the Beeth9 Assmebler, please use the Makefile provided. The
+Makefile targets can be seen below in the "Makefile Usage" section below. The 
+compiler used was g++, through clang (since this was coded and compiled on a
+MacBook). Note C++11 Standard Library is required. 
+
 ## Beeth9 Assembler Usage
+
+###Makefile Usage
+The compiler used was g++ (through clang, since I am on a MacBook)
+```
+// Compiles the source C++ code to produce the "Beeth9" assembler executable
+make
+```
+
 ###Successful Beeth9 Assembler Execution:
 
 ```
