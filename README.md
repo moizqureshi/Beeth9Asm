@@ -35,14 +35,17 @@ MacBook). Note C++11 Standard Library is required.
 ###Makefile Usage
 The compiler used was g++ (through clang, since I am on a MacBook)
 ```
-// Compiles the source C++ code to produce the "Beeth9" assembler executable
-make
+// Compiles the source C++ code to produce the "Beeth9Asm" assembler executable
+make 
+
+// Removes the compiled Beeth9 Assembler executebale "Beeth9Asm"
+make clean
 ```
 
 ###Successful Beeth9 Assembler Execution:
 
 ```
-./Beeth9 Problem17.s p17MachineCode.txt
+./Beeth9Asm Problem17.s p17MachineCode.txt
 Beeth9 Assembler successfully assembled: Problem17.s
 ```
 
@@ -50,19 +53,19 @@ Beeth9 Assembler successfully assembled: Problem17.s
 
 Missing Argument(s):
 ```
-./Beeth9 Problem17.s 
+./Beeth9Asm Problem17.s 
 Incorrect number of arguments!
 Please run Beeth9 Assembler as following:
 ./Beeth9Asm *.s  *.txt
 ```
 ```
-./Beeth9  
+./Beeth9Asm  
 Incorrect number of arguments!
 Please run Beeth9 Assembler as following:
 ./Beeth9Asm *.s  *.txt
 ```
 ```
-./Beeth9 Problem17.s Problem18.s MachineCode.txt 
+./Beeth9Asm Problem17.s Problem18.s MachineCode.txt 
 Incorrect number of arguments!
 Please run Beeth9 Assembler as following:
 ./Beeth9Asm *.s  *.txt
@@ -70,7 +73,7 @@ Please run Beeth9 Assembler as following:
 
 Empty Input Beeth9 Assembly File:
 ```
-./Beeth9 empty.s MachineCode.txt 
+./Beeth9Asm empty.s MachineCode.txt 
 The input assembly file is empty!
 Try again.
 ```
