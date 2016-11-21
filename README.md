@@ -18,7 +18,7 @@ Beeth9 assembly input files into the Beeth9 Assembler must **not**
 contain any labels (all branch offsets must be explicitly stored in a register)
 and all Beeth9 assembly instructions should be tabbed. There is no need to 
 remove any comments since the Beeth9 Assembler will ignore them. Refer to the 
-the example Beeth9 assembly files (Problem17.s, Problem18.s, or Problem19.s) to
+example Beeth9 assembly files (Problem17.s, Problem18.s, or Problem19.s) to
 see example formatting. Furthermore, refer to Beeth9MachineCode.txt to see 
 combined assembled assembly to machine code of the three programs. Note, this 
 file was created using the unix "cat" and ">" commands to combine them into one
@@ -32,7 +32,7 @@ MacBook). Note C++11 Standard Library is required.
 
 ## Beeth9 Assembler Usage
 
-###Makefile Usage
+###Makefile 
 The compiler used was g++ (through clang, since I am on a MacBook)
 ```
 // Compiles the source C++ code to produce the "Beeth9Asm" assembler executable
