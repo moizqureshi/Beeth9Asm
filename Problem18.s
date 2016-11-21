@@ -42,7 +42,7 @@
 
 	slt $r4, $r5		# rOv = (r4 < r5) ? 1:0
 
-	li 12			# load value of 12 (+offset to end)
+	li 13			# load value of 12 (+offset to end)
 	bez $r0			# if rOv == 0, then branch to end
 
 	clr $r2			# clear r2
@@ -55,7 +55,7 @@
 				# if so then rOv is set to 1
 				# rOv = (r2 contains r1[3:0]) ? 1:0
 
-	li 1			# load value of 1 (+offset to loopEnd)
+	li 2			# load value of 1 (+offset to loopEnd)
 	bez $r0			# if rOv == 0, then branch to loopEnd
 
 	inc $r7			# increment r7 (pattern count), since 4 bit
@@ -65,7 +65,7 @@
 	inc $r3			# increment r3 (offset to get next byte)
 	inc $r4			# increment r4 (loop counter)
 
-	li 13 			# load value of into r0
+	li 14 			# load value of into r0
 	twcmp $r0		# take 2's complement of 13 to get -13 in r0
 	branch $r0		# always branch to loop
 
