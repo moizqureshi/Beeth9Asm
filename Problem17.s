@@ -46,7 +46,7 @@
 	
 	slt $r6, $r7		# rOv = (r6 < r7) ? 1:0
 
-	li 15			# load 15 into r0, offset to CmultABLoInit
+	li 14			# load 15 into r0, offset to CmultABLoInit
 	bez $r0			# if rOv == 0, then branch to CmultABLoInit
 	
 	clsb $r3		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
@@ -81,7 +81,7 @@
 	
 	slt $r6, $r7		# rOv = (r6 < r7) ? 1:0
 	
-	li 15			# load 15 into r0, offset to CmultABHiInit
+	li 14			# load 15 into r0, offset to CmultABHiInit
 	bez $r0			# if rOv == 0, then branch to CmultABHiInit
 
 	clsb $r3		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
@@ -112,7 +112,7 @@
 	
 	slt $r6, $r7		# rOv = (r6 < r7) ? 1:0
 	
-	li 15			# load value of 15 into r0, offset to end
+	li 14			# load value of 15 into r0, offset to end
 	bez $r0			# if rOv == 0, then branch to end
 
 	clsb $r2		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
