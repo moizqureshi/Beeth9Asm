@@ -49,12 +49,15 @@
 	clr $r2			# clear r2
 	add $r2, $r3		# r2 = r2 + r3
 	lw ($r2)		# load next byte value into r2
+	
+	clr $r0			# clear r0
+	add $r0, $r1		# copy pattern to check for into r0
 
 	patr $r2		# checks the five locations of register r2 byte
 				# and determines if it contains the 4 bit 
-				# pattern in the LSBs of register r1 (r1[3:0]),
+				# pattern in the LSBs of register r0 (r0[3:0]),
 				# if so then rOv is set to 1
-				# rOv = (r2 contains r1[3:0]) ? 1:0
+				# rOv = (r2 contains r0[3:0]) ? 1:0
 	
 	li 2			# load value of 2 (+offset to loopEnd)
 	bez $r0			# if rOv == 0, then branch to loopEnd
