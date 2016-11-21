@@ -43,7 +43,7 @@
 
 	slt $r4, $r5		# rOv = (r4 < r5) ? 1:0
 	
-	li 13			# load value of 13 (+offset to end)
+	li 15			# load value of 13 (+offset to end)
 	bez $r0			# if rOv == 0, then branch to end
 	
 	clr $r2			# clear r2
@@ -68,7 +68,7 @@
 	inc $r3			# increment r3 (offset to get next byte)
 	inc $r4			# increment r4 (loop counter)
 	
-	li 14			# load value of 14 into r0
+	li 16			# load value of 14 into r0
 	twcmp $r0		# take 2's complement of 14 to get -14 in r0
 	branch $r0		# always branch to loop
 
