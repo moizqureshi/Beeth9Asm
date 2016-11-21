@@ -45,14 +45,14 @@
 	
 	slt $r6, $r7		# rOv = (r6 < r7) ? 1:0
 
-	li 15			# load 15 into r0, offset to CmultABLoInit
+	li 16			# load 15 into r0, offset to CmultABLoInit
 	bez $r0			# if rOv == 0, then branch to CmultABLoInit
 	
 	li 1			# load value of 1 into r0 (0x01 bitmask)	
 	and $r0, $r3		# r0 = (r0 & r3)
 	clsb $r0		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
 	
-	li 1			# load 1 into r0, offset to shiftProd1
+	li 2			# load 1 into r0, offset to shiftProd1
 	bez $r0			# if rOv == 1, then branch to shiftProd1
 	
 	add $r2, $r1		# r2 = r1 + r2; Add A to Product-HI (A*B)
@@ -66,7 +66,7 @@
 
 	inc $r6			# increment r6 by 1
 	
-	li 18			# load 18 into r0
+	li 19			# load 18 into r0
 	twcmp $r0		# take 2's Comp of r0 to get -18, offset val
 	branch $r0		# branch always to AmultBLoop
 
@@ -80,14 +80,14 @@
 	
 	slt $r6, $r7		# rOv = (r6 < r7) ? 1:0
 	
-	li 15			# load 15 into r0, offset to CmultABHiInit
+	li 16			# load 15 into r0, offset to CmultABHiInit
 	bez $r0			# if rOv == 0, then branch to CmultABHiInit
 
 	li 1			# load value of 1 into r0 (0x01 bitmask)
 	and $r0, $r3		# r0 = (ro & r3)
 	clsb $r0		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
 	
-	li 1			# load 1 into r0, offset to shiftProd2
+	li 2			# load 1 into r0, offset to shiftProd2
 	bez $r0			# if rOv == 0, then branch to shiftProd2
 	
 	add $r4, $r1		# r4 = r4 + r1; Add C to Product-HI (C*A*B-Lo)
@@ -101,7 +101,7 @@
 
 	inc $r6			# increment r6 by 1
 	
-	li 18			# load 18 into r0	
+	li 19			# load 18 into r0	
 	twcmp $r0		# take 2's Comp of r0 to get -18, offset val
 	branch $r0		# branch always to CmultABLoLoop
 
@@ -112,14 +112,14 @@
 	
 	slt $r6, $r7		# rOv = (r6 < r7) ? 1:0
 	
-	li 15			# load value of 15 into r0, offset to end
+	li 16			# load value of 15 into r0, offset to end
 	bez $r0			# if rOv == 0, then branch to end
 
 	li 1			# load value of 1 into r0 (0x01 bitmask)
 	and $r0, $r2		# r0 = (r0 & r2)
 	clsb $r0		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
 	
-	li 1			# load value of 1 into r0, offset to shiftProd3
+	li 2			# load value of 1 into r0, offset to shiftProd3
 	bez $r0			# if rOv == 0, then branch to shiftProd3
 	
 	add $r5, $r1		# r5 = r5 + r1; Add C to Product-HI (C*A*B-Hi)
@@ -134,7 +134,7 @@
 
 	inc $r6			# increment r6 by 1
 
-	li 18			# load immediate value of 18 into r0
+	li 19			# load immediate value of 18 into r0
 	twcmp $r0		# take 2's Comp of r0 to get -18, offset val
 	branch $r0		# always branch to CmultABHiLoop
 
