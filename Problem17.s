@@ -46,7 +46,7 @@
 	
 	slt $r6, $r7		# rOv = (r6 < r7) ? 1:0
 
-	li 16			# load 15 into r0, offset to CmultABLoInit
+	li 15			# load 15 into r0, offset to CmultABLoInit
 	bez $r0			# if rOv == 0, then branch to CmultABLoInit
 	
 	clsb $r3		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
@@ -65,11 +65,12 @@
 
 	inc $r6			# increment r6 by 1
 	
-	li 19			# load 18 into r0
+	li 18			# load 18 into r0
 	twcmp $r0		# take 2's Comp of r0 to get -18, offset val
 	branch $r0		# branch always to AmultBLoop
 
-	li 3			# load value of 3 into r0 
+	li 3			# load value of 3 into r0
+	clr $r1 		# clear $r1
 	add $r1, $r0		# copy r0 to r1 (mem address of C)
 	lw ($r1)		# load value of C into r1 from memory
 	clr $r6			# reset counter = 0	
@@ -80,7 +81,7 @@
 	
 	slt $r6, $r7		# rOv = (r6 < r7) ? 1:0
 	
-	li 16			# load 15 into r0, offset to CmultABHiInit
+	li 15			# load 15 into r0, offset to CmultABHiInit
 	bez $r0			# if rOv == 0, then branch to CmultABHiInit
 
 	clsb $r3		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
@@ -99,7 +100,7 @@
 
 	inc $r6			# increment r6 by 1
 	
-	li 19			# load 18 into r0	
+	li 18			# load 18 into r0	
 	twcmp $r0		# take 2's Comp of r0 to get -18, offset val
 	branch $r0		# branch always to CmultABLoLoop
 
@@ -111,7 +112,7 @@
 	
 	slt $r6, $r7		# rOv = (r6 < r7) ? 1:0
 	
-	li 16			# load value of 15 into r0, offset to end
+	li 15			# load value of 15 into r0, offset to end
 	bez $r0			# if rOv == 0, then branch to end
 
 	clsb $r2		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
@@ -131,7 +132,7 @@
 
 	inc $r6			# increment r6 by 1
 
-	li 19			# load immediate value of 18 into r0
+	li 18			# load immediate value of 18 into r0
 	twcmp $r0		# take 2's Comp of r0 to get -18, offset val
 	branch $r0		# always branch to CmultABHiLoop
 
