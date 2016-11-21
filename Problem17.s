@@ -41,6 +41,7 @@
 	lw ($r3)		# load value of B into r3 from memory
 
 	li 8			# load value of 8 into r0
+	clr $r7 		# clear r7
 	add $r7, $r0		# copy r0 to r7 (loop limit = 8)
 	
 	slt $r6, $r7		# rOv = (r6 < r7) ? 1:0
@@ -48,9 +49,7 @@
 	li 16			# load 15 into r0, offset to CmultABLoInit
 	bez $r0			# if rOv == 0, then branch to CmultABLoInit
 	
-	li 1			# load value of 1 into r0 (0x01 bitmask)	
-	and $r0, $r3		# r0 = (r0 & r3)
-	clsb $r0		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
+	clsb $r3		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
 	
 	li 2			# load 1 into r0, offset to shiftProd1
 	bez $r0			# if rOv == 1, then branch to shiftProd1
@@ -76,6 +75,7 @@
 	clr $r6			# reset counter = 0	
 
 	li 8			# load value of 8 into r0
+	clr $r7 		# clear r7
 	add $r7, %r0		# copy r0 to r7 (loop limit = 8)
 	
 	slt $r6, $r7		# rOv = (r6 < r7) ? 1:0
@@ -83,9 +83,7 @@
 	li 16			# load 15 into r0, offset to CmultABHiInit
 	bez $r0			# if rOv == 0, then branch to CmultABHiInit
 
-	li 1			# load value of 1 into r0 (0x01 bitmask)
-	and $r0, $r3		# r0 = (ro & r3)
-	clsb $r0		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
+	clsb $r3		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
 	
 	li 2			# load 1 into r0, offset to shiftProd2
 	bez $r0			# if rOv == 0, then branch to shiftProd2
@@ -108,6 +106,7 @@
 	clr $r6 		# reset counter = 0
 
 	li 8			# load value of 8 into r0
+	clr $r7 		# clear r7
 	add $r7, %r0		# copy r0 to r7 (loop limit = 8)
 	
 	slt $r6, $r7		# rOv = (r6 < r7) ? 1:0
@@ -115,9 +114,7 @@
 	li 16			# load value of 15 into r0, offset to end
 	bez $r0			# if rOv == 0, then branch to end
 
-	li 1			# load value of 1 into r0 (0x01 bitmask)
-	and $r0, $r2		# r0 = (r0 & r2)
-	clsb $r0		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
+	clsb $r2		# rOv = if (r0 & 0x01 == 0x01) ? 1:0
 	
 	li 2			# load value of 1 into r0, offset to shiftProd3
 	bez $r0			# if rOv == 0, then branch to shiftProd3
