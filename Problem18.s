@@ -39,6 +39,8 @@
 	inc $r5			# increment r5 by 1 (outerloop counter) to get
 				# value of 64
 
+	add $r5, $r5, $r3 	# add 32 to r5, so limit will be at 96'th byte 
+				# location in data memory
 
 	slt $r4, $r5		# rOv = (r4 < r5) ? 1:0
 
