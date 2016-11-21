@@ -46,13 +46,13 @@
 	li 15			# load value of 13 (+offset to end)
 	bez $r0			# if rOv == 0, then branch to end
 	
+	clr $r0			# clear r0
+	add $r0, $r1		# copy pattern to check for into r0
+
 	clr $r2			# clear r2
 	add $r2, $r3		# r2 = r2 + r3
 	lw ($r2)		# load next byte value into r2
 	
-	clr $r0			# clear r0
-	add $r0, $r1		# copy pattern to check for into r0
-
 	patr $r2		# checks the five locations of register r2 byte
 				# and determines if it contains the 4 bit 
 				# pattern in the LSBs of register r0 (r0[3:0]),
