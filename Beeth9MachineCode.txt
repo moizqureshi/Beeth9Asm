@@ -107,7 +107,7 @@
 // Problem19.s Machine Code Output
 000010011    // li 19
 111100000    // slt r4 r0
-000110010    // li 50
+000110100    // li 52
 010000001    // bez r0
 001111000    // clr r7
 011111001    // add r7 r1
