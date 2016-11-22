@@ -19,7 +19,7 @@
 	li 19			# load value of 19 into r0 (outer loop limit)
 	slt $r4, $r0		# rOv = (r4 < r0) ? 1:0
 
-	li 48			# load value of 48 into r0 (offset to end)
+	li 49			# load value of 48 into r0 (offset to end)
 	bez $r0			# if rOv == 0, then branch to end
 
 	clr $r7			# clear r7
@@ -29,7 +29,7 @@
 	li 20			# load value of 20 into r0 (inner loop limit)
 	slt $r5, $r0		# rOv = (r5 < r0) ? 1:0
 
-	li 42			# load value of 42 into r0 (offset to end)
+	li 43			# load value of 42 into r0 (offset to end)
 	bez $r0			# if rOv == 0, then branch to end
 
 	clr $r2			# clear r2
@@ -47,15 +47,15 @@
 
 	slt $r2, $r3		# rOv = (r2 < r3) ? 1:0
 
-	li 5			# load value of 5 into r0 (offset to subtract)
+	li 6			# load value of 5 into r0 (offset to subtract)
 	bez $r0			# if rOv == 0, then branch to subract
 
 	slt $r3, $r2		# rOv = (r3 < r2) ? 1:0
 
-	li 2			# load value of 2 into r0 (offset to subtract)
+	li 3			# load value of 2 into r0 (offset to subtract)
 	bez $r0			# if rOv == 0, then branch to subtract
 	
-	li 24			# load value of 24 into r0 (offset to 
+	li 25			# load value of 24 into r0 (offset to 
 				# equalElements)
 
 	branch $r0		# since r2 == r3, branch to equalElements 
@@ -63,7 +63,7 @@
 
 	sub $r2, $r3		# r2 = r2 - r3
 
-	li 6			# load value of 6 into r0, offset to noOverflow
+	li 7			# load value of 6 into r0, offset to noOverflow
 			
 	bez $r0			# if rOv == 0, then branch to noOverflow
 	
@@ -76,7 +76,7 @@
 
 	slt $r2, $r6		# rOv = (r2 < r6) ? 1:0
 
-	li 8			# load value of 10 into r0 (offset to 
+	li 9			# load value of 10 into r0 (offset to 
 				# innerLoopEnd 
 				
 	bez $r0			# if rOv == 0, then branch to innerLoopEnd 
@@ -92,7 +92,7 @@
 	
 	slt $r2, $r6		# rOv = (r2 < r6) ? 1:0
 
-	li 2			# load value of 2 into r0 (offset to 
+	li 3			# load value of 2 into r0 (offset to 
 				# innerLoopEnd 
 				
 	bez $r0			# if rOv == 0, then branch to innerLoopEnd 
@@ -106,7 +106,7 @@
 	
 	inc $r5			# increment r5 (inner loop counter)
 
-	li 38			# load value of 38 into r0
+	li 39			# load value of 38 into r0
 	twcmp $r0		# take 2's complement of 38 (-38) to get offset
 				# to innerLoop branch
 
@@ -116,7 +116,7 @@
 	inc $r4 		# increment r4 (outer loop counter)
 	inc $r1			# increment r1 (mem address of array)
 
-	li 49			# load value of 49 into r0
+	li 50			# load value of 49 into r0
 	twcmp $r0		# take 2's complement of 49 (-49) to get offset
 				# to outerloop label
 
