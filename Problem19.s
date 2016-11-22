@@ -29,7 +29,7 @@
 	li 20			# load value of 20 into r0 (inner loop limit)
 	slt $r5, $r0		# rOv = (r5 < r0) ? 1:0
 
-	li 43			# load value of 42 into r0 (offset to end)
+	li 37			# load value of 42 into r0 (offset to end)
 	bez $r0			# if rOv == 0, then branch to end
 
 	clr $r2			# clear r2
