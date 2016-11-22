@@ -21,7 +21,8 @@ public:
   
   // Instuctiion typedef enum
   typedef enum {LI, CLR, INC, SLL, SRL, TWCMP, HALT, LW, SW, BR, 
-               BEZ, CLSB, GETOV, PATR, ABS, ADD, SUB, AND, OR, SLT} instr;
+                BEZ, CLSB, GETOV, PATR, ABS, ADD, SUB, AND, OR, SLT, 
+                SLTU} instr;
 
   // ParseTokens() Function Signature
   string ParseTokens(queue<string> &tokens);

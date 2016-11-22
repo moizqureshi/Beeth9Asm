@@ -43,6 +43,7 @@ int Parser::getInstrEnum(string s) {
   else if (s == "and") return 17;
   else if (s == "or") return 18;
   else if (s == "slt") return 19;
+  else if (s == "sltu") return 20;
   else return -1;
 }
 
@@ -232,6 +233,18 @@ string Parser::ParseTokens(queue<string> &tokens) {
       regBinStr = getBinFromInt(3, stoi(regBinStr));
       parsedToken << regBinStr;
       parsedToken << "101";
+      break;
+    
+    case SLTU : 
+      tokens.pop();
+      parsedToken << "010";
+      regBinStr = tokens.front();
+      tokens.pop();
+      regBinStr.erase(std::remove(regBinStr.begin(), regBinStr.end(), 'r'), 
+                      regBinStr.end());
+      regBinStr = getBinFromInt(3, stoi(regBinStr));
+      parsedToken << regBinStr;
+      parsedToken << "110";
       break;
     
     case ADD : 
