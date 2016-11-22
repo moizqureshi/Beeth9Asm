@@ -19,7 +19,7 @@
 	li 19			# load value of 19 into r0 (outer loop limit)
 	slt $r4, $r0		# rOv = (r4 < r0) ? 1:0
 
-	li 49			# load value of 48 into r0 (offset to end)
+	li 50			# load value of 48 into r0 (offset to end)
 	bez $r0			# if rOv == 0, then branch to end
 
 	clr $r7			# clear r7
@@ -29,8 +29,9 @@
 	li 20			# load value of 20 into r0 (inner loop limit)
 	slt $r5, $r0		# rOv = (r5 < r0) ? 1:0
 
-	li 37			# load value of 42 into r0 (offset to end)
-	bez $r0			# if rOv == 0, then branch to end
+	li 37			# load value of 42 into r0 (offset to 
+				# outerloopend)
+	bez $r0			# if rOv == 0, then branch to outloopend
 
 	clr $r2			# clear r2
 	add $r2, $r1		# copy r1 into r2
@@ -115,8 +116,11 @@
 
 	inc $r4 		# increment r4 (outer loop counter)
 	inc $r1			# increment r1 (mem address of array)
+	clr $r5 		# clear inner loop counter
+	add $r5, $r4 		# r5 = r5 + r4 (j = i)
+	inc $r5 		# r5 = r5 + 1 (j = i +1)
 
-	li 50			# load value of 49 into r0
+	li 53			# load value of 49 into r0
 	twcmp $r0		# take 2's complement of 49 (-49) to get offset
 				# to outerloop label
 
