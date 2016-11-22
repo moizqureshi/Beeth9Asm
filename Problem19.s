@@ -75,7 +75,7 @@
 				# distance between the two number when read as
 				# an 8-bit unsigned value
 
-	slt $r2, $r6		# rOv = (r2 < r6) ? 1:0
+	sltu $r2		# rOv = (r2 < r6) ? 1:0
 
 	li 9			# load value of 10 into r0 (offset to 
 				# innerLoopEnd 
