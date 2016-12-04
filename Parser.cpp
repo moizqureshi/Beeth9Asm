@@ -44,6 +44,7 @@ int Parser::getInstrEnum(string s) {
   else if (s == "or") return 18;
   else if (s == "slt") return 19;
   else if (s == "sltu") return 20;
+  else if (s == "nop") return 21;
   else return -1;
 }
 
@@ -245,6 +246,11 @@ string Parser::ParseTokens(queue<string> &tokens) {
       regBinStr = getBinFromInt(3, stoi(regBinStr));
       parsedToken << regBinStr;
       parsedToken << "110";
+      break;
+    
+    case NOP : 
+      tokens.pop();
+      parsedToken << "010000111";
       break;
     
     case ADD : 
